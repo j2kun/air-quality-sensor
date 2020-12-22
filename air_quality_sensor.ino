@@ -1,30 +1,25 @@
-/*
- * Measures temperature and air quality and outputs it on a 128x128 display.
- * Icons from https://www.iconpacks.net/free-icon-pack/emoticons-127.html
- * Part List:
- *  - SparkFun BlackBoard C (Running in 3.3V mode)
- *  - SparkFun TMP102 digital temperature sensor
- *  - Zio Qwiic 1.5" OLED 128x128
- *  - Panasonic SN-GCJA5 Particle Sensor (red=5V, black=GND, yellow=SCL, blue=SDA)
- */
-
 #include <Wire.h>
 #include <U8g2lib.h>
 #include <SparkFunTMP102.h>
 #include <SparkFun_Particle_Sensor_SN-GCJA5_Arduino_Library.h>
 #include <CircularBuffer.h>
+ 
+// Icons defined as XBM data arrays
 #include "image.h"
 
-#define PROGRAM_NAME "Air Quality Index"
+#define HEADING "Air Quality Index"
 #define MAX_AQI 501
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 128
 #define MID_SCREEN 64
 
+// The sreen is 128x128 pixels, with the origin in the top left. These macros
+// allow you to change the placement and scaling of the chart
 #define PLOT_START_X 10
 #define PLOT_START_Y 20
 #define PLOT_END_X 118
 #define PLOT_END_Y 50
+// The AQI value that will be at the top of the vertical axis
 #define PLOT_RANGE 100
 
 SFE_PARTICLE_SENSOR airSensor;
@@ -69,7 +64,7 @@ void loop() {
     u8g2.drawRFrame(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 8);
     u8g2.drawXBMP(50, 76, icon_width, icon_height, aqiIcon);
     u8g2.setFont(u8g2_font_tenthinguys_tr);
-    u8g2.drawStr(MID_SCREEN - u8g2.getStrWidth(PROGRAM_NAME) / 2, 13, PROGRAM_NAME);
+    u8g2.drawStr(MID_SCREEN - u8g2.getStrWidth(HEADING) / 2, 13, HEADING);
     u8g2.drawStr(MID_SCREEN - u8g2.getStrWidth(aqiBucketLabel.c_str()) / 2, 123, aqiBucketLabel.c_str());
     u8g2.drawLine(0, 16, SCREEN_WIDTH, 16);
     u8g2.drawLine(0, 110, SCREEN_WIDTH, 110);
