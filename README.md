@@ -12,3 +12,9 @@ Part List:
  - Panasonic SN-GCJA5 Particle Sensor (red=5V, black=GND, yellow=SCL, blue=SDA)
 
 Icons from https://www.iconpacks.net/free-icon-pack/emoticons-127.html
+
+## Dependencies 
+
+ - https://github.com/sparkfun/SparkFun_Particle_Sensor_SN-GCJA5_Arduino_Library
+ - https://github.com/olikraus/u8g2
+ - https://github.com/rlogiacco/CircularBuffer

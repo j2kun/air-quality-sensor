@@ -1,6 +1,5 @@
 #include <Wire.h>
 #include <U8g2lib.h>
-#include <SparkFunTMP102.h>
 #include <SparkFun_Particle_Sensor_SN-GCJA5_Arduino_Library.h>
 #include <CircularBuffer.h>
  
